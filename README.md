@@ -143,7 +143,7 @@ Reference the issue when relevant, e.g. `Closes #12`.
 | Mylik Green | [Role] | [@username] |
 | Lucas Guenther | [Role] | [@username] |
 | Henry Nguyen | [Sprint Master] | [@HN2028] |
-| Lawson Barton | [Role] | [@username] |
+| Lawson Barton | [] | [@LawBarton] |
 
 *Scrum Master (Week Leader) rotates each sprint.*
 
