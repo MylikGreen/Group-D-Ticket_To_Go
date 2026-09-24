@@ -140,7 +140,7 @@ Reference the issue when relevant, e.g. `Closes #12`.
 | Name | Role | GitHub |
 |------|------|--------|
 | Lucia Nguyen | [Role] | [@username] |
-| Mylik Green | [Role] | [@username] |
+| Mylik Green | Product Owner | [@MylikGreen] |
 | Lucas Guenther | [Role] | [@username] |
 | Henry Nguyen | [Sprint Master] | [@HN2028] |
 | Lawson Barton | [Role] | [@username] |
