@@ -142,7 +142,7 @@ Reference the issue when relevant, e.g. `Closes #12`.
 | Lucia Nguyen | [Role] | [@username] |
 | Mylik Green | [Role] | [@username] |
 | Lucas Guenther | [Role] | [@username] |
-| Henry Nguyen | [Role] | [@username] |
+| Henry Nguyen | [Sprint Master] | [@HN2028] |
 | Lawson Barton | [Role] | [@username] |
 
 *Scrum Master (Week Leader) rotates each sprint.*
