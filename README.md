@@ -55,8 +55,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/[OWNER]/[REPO-NAME].git
-   cd [REPO-NAME]
+   git clone https://github.com/MylikGreen/Group-D-Ticket_To_Go
+   cd Group-D-Ticket_To_Go
    ```
 
 2. **Install dependencies**
