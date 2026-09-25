@@ -134,7 +134,7 @@ Reference the issue when relevant, e.g. `Closes #12`.
 |------|------|--------|
 | Lucia Nguyen | Sprint Master | lunamiel |
 | Mylik Green | Product Owner | @MylikGreen |
-| Lucas Guenther | [Role] | [@username] |
+| Lucas Guenther | System Analyst | @lucasguenther24 |
 | Henry Nguyen | QA Specialist | @HN2028 |
 | Lawson Barton | Designer | @LawBarton |
 
