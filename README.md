@@ -45,54 +45,50 @@
 ### Prerequisites
 
 * [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) version 18 or newer (if using a JavaScript stack)
-* An API key for the AI service (ask the team lead; never commit it)
+* A web browser (Chrome, Firefox, or Edge)
+* [VS Code](https://code.visualstudio.com/) with the **Live Server** extension (recommended)
+* A Gemini API key (only needed for the AI features, never commit it)
 
 ### Installation
 
 1. **Clone the repository**
-   ```bash
+```bash
    git clone https://github.com/MylikGreen/Group-D-Ticket_To_Go
    cd Group-D-Ticket_To_Go
-   ```
+```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+2. **Add your API key**
+   Copy `js/config.example.js`, rename the copy to `js/config.js`, and put your key in it.
+   `config.js` is in `.gitignore` so keys never get pushed.
 
-3. **Set up environment variables**
-   Create a `.env` file in the project root:
-   ```
-   AI_API_KEY=your_key_here
-   DATABASE_URL=your_database_url_here
-   ```
-   `.env` is listed in `.gitignore` so secrets never get pushed.
-
-4. **Run the app locally**
-   ```bash
-   npm run dev
-   ```
-   Then open `http://localhost:5173` (or the port shown in your terminal).
+3. **Run the app**
+   * **With Live Server:** open the folder in VS Code, right click `index.html`, and pick **Open with Live Server**.
+   * **Without it:** double click `index.html` to open it in your browser.
 
 ## Project Structure
 
 ```
-study-to-go/
-├── client/          # Frontend code (pages, components, styles)
-├── server/          # Backend code (routes, controllers, AI integration)
-├── docs/            # Planning documents, diagrams, screenshots
+Group-D-Ticket_To_Go/
+├── index.html              # Home page
+├── pages/
+│   ├── decks.html          # Create and manage decks
+│   ├── study.html          # Study mode
+│   └── assistant.html      # AI assistant
+├── css/
+│   └── style.css           # Styles for every page
+├── js/
+│   ├── main.js             # Shared code (nav, saving data)
+│   └── config.example.js   # Template for the API key
+├── assets/
+│   └── images/             # Images and screenshots
 ├── .gitignore
-├── .env.example     # Template for environment variables
 └── README.md
 ```
-
-*This structure will be kept in sync with the repo as the project grows.*
 
 ## Project Backlog
 
 All user stories, tasks, and bugs are tracked on our **GitHub Project board**:
-[Link to project board]
+https://github.com/MylikGreen/Group-D-Ticket_To_Go/blob/main/backlog.md
 
 Each ticket includes:
 
@@ -137,10 +133,10 @@ Reference the issue when relevant, e.g. `Closes #12`.
 | Name | Role | GitHub |
 |------|------|--------|
 | Lucia Nguyen | Sprint Master | lunamiel |
-| Mylik Green | Product Owner | [@MylikGreen] |
+| Mylik Green | Product Owner | @MylikGreen |
 | Lucas Guenther | [Role] | [@username] |
-| Henry Nguyen | [Sprint Master] | [@HN2028] |
-| Lawson Barton | [Designer] | [@LawBarton] |
+| Henry Nguyen | QA Specialist | @HN2028 |
+| Lawson Barton | Designer | @LawBarton |
 
 *Scrum Master (Week Leader) rotates each sprint.*
 
