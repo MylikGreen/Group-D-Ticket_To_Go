@@ -34,14 +34,11 @@
 
 | Layer | Technology |
 |-------|------------|
-| Frontend | [e.g. React + Vite] |
-| Backend | [e.g. Node.js + Express] |
-| Database | [e.g. MongoDB / PostgreSQL / Firebase] |
-| AI Integration | [e.g. OpenAI API / Claude API / Gemini API] |
+| Frontend | HTML, CSS, JavaScript |
+| Data Storage | Browser localStorage |
+| AI Integration | Gemini |
 | Version Control | Git + GitHub |
 | Project Tracking | GitHub Projects |
-
-*Bracketed items are placeholders. Update them once the team finalizes the stack.*
 
 ## Getting Started
 
@@ -139,7 +136,7 @@ Reference the issue when relevant, e.g. `Closes #12`.
 
 | Name | Role | GitHub |
 |------|------|--------|
-| Lucia Nguyen | [Role] | [@username] |
+| Lucia Nguyen | Sprint Master | lunamiel |
 | Mylik Green | Product Owner | [@MylikGreen] |
 | Lucas Guenther | [Role] | [@username] |
 | Henry Nguyen | [Sprint Master] | [@HN2028] |
@@ -149,4 +146,8 @@ Reference the issue when relevant, e.g. `Closes #12`.
 
 ## Screenshots
 
-*Screenshots of the app will be added here as features are completed.*
+<img width="2240" height="1113" alt="Screenshot 2026-09-24 at 20 33 54" src="https://github.com/user-attachments/assets/e7fb5225-ce95-40e9-b569-2ddb9afad8c1" />
+
+<img width="2240" height="1109" alt="Screenshot 2026-09-24 at 20 34 23" src="https://github.com/user-attachments/assets/2b1c11c2-c926-496f-b6a3-1a4330fba928" />
+
+
