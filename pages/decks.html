@@ -20,7 +20,43 @@
   <main>
     <h1 class="page-title">My Decks</h1>
     <p>Create and manage your flashcard decks.</p>
-    <div class="placeholder">Coming soon</div>
+
+    <!-- Deck list view -->
+    <section id="deck-list-view">
+      <form id="new-deck-form" class="inline-form">
+        <input type="text" id="new-deck-name" placeholder="New deck name (e.g. Biology Ch. 3)" maxlength="60" aria-label="New deck name">
+        <button type="submit" class="btn">Add Deck</button>
+      </form>
+      <p id="deck-error" class="error" role="alert"></p>
+      <div id="decks" class="deck-grid"></div>
+    </section>
+
+    <!-- Single deck editor view -->
+    <section id="deck-edit-view" hidden>
+      <button type="button" id="back-btn" class="btn-link">&larr; All decks</button>
+      <div class="deck-head">
+        <h2 id="deck-title"></h2>
+        <div class="row-actions">
+          <button type="button" id="rename-deck" class="btn-small">Rename</button>
+          <button type="button" id="study-deck" class="btn-small primary">Study</button>
+        </div>
+      </div>
+
+      <form id="card-form" class="card-form">
+        <h3 id="card-form-title">Add a card</h3>
+        <label for="card-front">Front</label>
+        <textarea id="card-front" rows="2" maxlength="500" placeholder="Question or term"></textarea>
+        <label for="card-back">Back</label>
+        <textarea id="card-back" rows="3" maxlength="1000" placeholder="Answer or definition"></textarea>
+        <p id="card-error" class="error" role="alert"></p>
+        <div class="row-actions">
+          <button type="submit" class="btn" id="card-submit">Add Card</button>
+          <button type="button" class="btn-small" id="card-cancel" hidden>Cancel edit</button>
+        </div>
+      </form>
+
+      <div id="cards" class="card-list"></div>
+    </section>
   </main>
 
   <footer>
@@ -28,5 +64,6 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script src="../js/decks.js"></script>
 </body>
 </html>
