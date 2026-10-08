@@ -20,7 +20,41 @@
   <main>
     <h1 class="page-title">Study</h1>
     <p>Flip through your cards and track what you know.</p>
-    <div class="placeholder">Coming soon</div>
+
+    <section id="study-picker" hidden>
+      <div id="study-decks" class="deck-grid"></div>
+    </section>
+
+    <section id="study-area" hidden>
+      <div class="study-top">
+        <h2 id="study-deck-name"></h2>
+        <select id="study-switch" aria-label="Switch deck"></select>
+      </div>
+      <div class="progress-wrap" aria-hidden="true"><div id="progress-bar"></div></div>
+      <p id="progress-text" class="progress-text"></p>
+
+      <div id="flashcard" class="flashcard" role="button" tabindex="0" aria-label="Flip card">
+        <div class="flashcard-inner">
+          <div class="face front"><span class="face-label">Front</span><p id="card-front-text"></p></div>
+          <div class="face back"><span class="face-label">Back</span><p id="card-back-text"></p></div>
+        </div>
+      </div>
+      <p class="hint">Click the card (or press Space) to flip</p>
+
+      <div class="study-actions">
+        <button type="button" id="prev-btn" class="btn-small">&larr; Back</button>
+        <button type="button" id="learning-btn" class="btn-small learning">Still Learning</button>
+        <button type="button" id="known-btn" class="btn-small primary">Known</button>
+        <button type="button" id="next-btn" class="btn-small">Next &rarr;</button>
+      </div>
+      <div class="study-actions">
+        <button type="button" id="shuffle-btn" class="btn-small">Shuffle</button>
+        <button type="button" id="reset-btn" class="btn-small">Reset progress</button>
+        <label class="check"><input type="checkbox" id="only-learning"> Only cards I'm still learning</label>
+      </div>
+    </section>
+
+    <div id="study-empty" class="placeholder" hidden></div>
   </main>
 
   <footer>
@@ -28,5 +62,6 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script src="../js/study.js"></script>
 </body>
 </html>
