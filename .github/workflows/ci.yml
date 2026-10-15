@@ -1,0 +1,26 @@
+# CI: runs on every push and pull request to check the code
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check HTML for errors
+        run: npx --yes html-validate@8.18.2 index.html pages/*.html
+
+      - name: Check JavaScript syntax
+        run: for f in js/*.js; do node --check "$f"; done
