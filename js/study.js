@@ -2,7 +2,7 @@
 
 let decks = loadDecks();
 let deck = null;
-let queue = [];   // card ids in the order we're studying them
+let queue = []; // card ids in the order we're studying them
 let index = 0;
 
 const $ = (id) => document.getElementById(id);
@@ -114,9 +114,10 @@ function render() {
   if (queue.length === 0) {
     show("flashcard", false);
     show("study-empty", true);
-    empty.textContent = total === 0
-      ? "This deck has no cards yet. Add some on the My Decks page."
-      : "Nice work! No cards left in this view. Uncheck the filter or reset progress to go again.";
+    empty.textContent =
+      total === 0
+        ? "This deck has no cards yet. Add some on the My Decks page."
+        : "Nice work! No cards left in this view. Uncheck the filter or reset progress to go again.";
     return;
   }
 
@@ -156,20 +157,40 @@ $("flashcard").addEventListener("keydown", (e) => {
 });
 document.addEventListener("keydown", (e) => {
   if (!deck || e.target.matches("input, select, textarea")) return;
-  if (e.key === "ArrowRight" && index < queue.length - 1) { index++; render(); }
-  if (e.key === "ArrowLeft" && index > 0) { index--; render(); }
+  if (e.key === "ArrowRight" && index < queue.length - 1) {
+    index++;
+    render();
+  }
+  if (e.key === "ArrowLeft" && index > 0) {
+    index--;
+    render();
+  }
 });
 
-$("next-btn").addEventListener("click", () => { index++; render(); });
-$("prev-btn").addEventListener("click", () => { index--; render(); });
+$("next-btn").addEventListener("click", () => {
+  index++;
+  render();
+});
+$("prev-btn").addEventListener("click", () => {
+  index--;
+  render();
+});
 $("known-btn").addEventListener("click", () => mark("known"));
 $("learning-btn").addEventListener("click", () => mark("learning"));
-$("shuffle-btn").addEventListener("click", () => { buildQueue(true); render(); });
-$("only-learning").addEventListener("change", () => { buildQueue(false); render(); });
+$("shuffle-btn").addEventListener("click", () => {
+  buildQueue(true);
+  render();
+});
+$("only-learning").addEventListener("change", () => {
+  buildQueue(false);
+  render();
+});
 $("study-switch").addEventListener("change", (e) => startDeck(e.target.value));
 $("reset-btn").addEventListener("click", () => {
   if (confirm("Reset progress for this deck?")) {
-    deck.cards.forEach((c) => { c.status = "new"; });
+    deck.cards.forEach((c) => {
+      c.status = "new";
+    });
     persist();
     buildQueue(false);
     render();

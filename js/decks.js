@@ -45,20 +45,30 @@ function renderDecks() {
     const known = deck.cards.filter((c) => c.status === "known").length;
     const card = el("div", "deck-card");
     card.appendChild(el("h3", "", deck.name));
-    card.appendChild(el("p", "deck-meta", `${deck.cards.length} card${deck.cards.length === 1 ? "" : "s"} · ${known} known`));
+    card.appendChild(
+      el(
+        "p",
+        "deck-meta",
+        `${deck.cards.length} card${deck.cards.length === 1 ? "" : "s"} · ${known} known`,
+      ),
+    );
 
     const actions = el("div", "row-actions");
     actions.appendChild(button("Edit", "btn-small primary", () => openDeck(deck.id)));
-    actions.appendChild(button("Study", "btn-small", () => {
-      window.location.href = "study.html?deck=" + encodeURIComponent(deck.id);
-    }));
-    actions.appendChild(button("Delete", "btn-small danger", () => {
-      if (confirm(`Delete "${deck.name}" and all its cards?`)) {
-        decks = decks.filter((d) => d.id !== deck.id);
-        persist();
-        renderDecks();
-      }
-    }));
+    actions.appendChild(
+      button("Study", "btn-small", () => {
+        window.location.href = "study.html?deck=" + encodeURIComponent(deck.id);
+      }),
+    );
+    actions.appendChild(
+      button("Delete", "btn-small danger", () => {
+        if (confirm(`Delete "${deck.name}" and all its cards?`)) {
+          decks = decks.filter((d) => d.id !== deck.id);
+          persist();
+          renderDecks();
+        }
+      }),
+    );
     card.appendChild(actions);
     wrap.appendChild(card);
   });
@@ -119,14 +129,16 @@ function renderEditor() {
 
     const actions = el("div", "row-actions");
     actions.appendChild(button("Edit", "btn-small", () => startEditCard(c.id)));
-    actions.appendChild(button("Delete", "btn-small danger", () => {
-      if (confirm("Delete this card?")) {
-        deck.cards = deck.cards.filter((x) => x.id !== c.id);
-        if (editingCardId === c.id) resetCardForm();
-        persist();
-        renderEditor();
-      }
-    }));
+    actions.appendChild(
+      button("Delete", "btn-small danger", () => {
+        if (confirm("Delete this card?")) {
+          deck.cards = deck.cards.filter((x) => x.id !== c.id);
+          if (editingCardId === c.id) resetCardForm();
+          persist();
+          renderEditor();
+        }
+      }),
+    );
     row.appendChild(actions);
     wrap.appendChild(row);
   });
