@@ -41,3 +41,20 @@ function saveDecks(decks) {
 function makeId() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 }
+
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+
+    const isDarkMode =
+        document.body.classList.contains("dark-mode");
+
+    localStorage.setItem("darkMode", isDarkMode);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("darkMode");
+
+    if (savedTheme === "true") {
+        document.body.classList.add("dark-mode");
+    }
+});
