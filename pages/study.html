@@ -1,67 +1,85 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Study | Study To-Go</title>
-  <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-  <header class="navbar">
-    <a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19C5 10 11 4 20 4c0 9-6 15-15 15z" fill="#7a9a54"/><path d="M5 19c4-4 7-7 11-11" stroke="#fffdf7" stroke-width="1.6" stroke-linecap="round"/></svg>Study To-Go</a>
-    <nav>
-      <a href="../index.html">Home</a>
-      <a href="decks.html">My Decks</a>
-      <a href="study.html">Study</a>
-      <a href="assistant.html">AI Assistant</a>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study | Study To-Go</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a href="../index.html" class="logo"
+        ><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 19C5 10 11 4 20 4c0 9-6 15-15 15z" fill="#7a9a54" />
+          <path
+            d="M5 19c4-4 7-7 11-11"
+            stroke="#fffdf7"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          /></svg
+        >Study To-Go</a
+      >
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="decks.html">My Decks</a>
+        <a href="study.html">Study</a>
+        <a href="assistant.html">AI Assistant</a>
+      </nav>
+    </header>
 
-  <main>
-    <h1 class="page-title">Study</h1>
-    <p>Flip through your cards and track what you know.</p>
+    <main>
+      <h1 class="page-title">Study</h1>
+      <p>Flip through your cards and track what you know.</p>
 
-    <section id="study-picker" hidden>
-      <div id="study-decks" class="deck-grid"></div>
-    </section>
+      <section id="study-picker" hidden>
+        <div id="study-decks" class="deck-grid"></div>
+      </section>
 
-    <section id="study-area" hidden>
-      <div class="study-top">
-        <h2 id="study-deck-name">Study Session</h2>
-        <select id="study-switch" aria-label="Switch deck"></select>
-      </div>
-      <div class="progress-wrap" aria-hidden="true"><div id="progress-bar"></div></div>
-      <p id="progress-text" class="progress-text"></p>
-
-      <div id="flashcard" class="flashcard" role="button" tabindex="0" aria-label="Flip card">
-        <div class="flashcard-inner">
-          <div class="face front"><span class="face-label">Front</span><p id="card-front-text"></p></div>
-          <div class="face back"><span class="face-label">Back</span><p id="card-back-text"></p></div>
+      <section id="study-area" hidden>
+        <div class="study-top">
+          <h2 id="study-deck-name">Study Session</h2>
+          <select id="study-switch" aria-label="Switch deck"></select>
         </div>
-      </div>
-      <p class="hint">Click the card (or press Space) to flip</p>
+        <div class="progress-wrap" aria-hidden="true"><div id="progress-bar"></div></div>
+        <p id="progress-text" class="progress-text"></p>
 
-      <div class="study-actions">
-        <button type="button" id="prev-btn" class="btn-small">&larr; Back</button>
-        <button type="button" id="learning-btn" class="btn-small learning">Still Learning</button>
-        <button type="button" id="known-btn" class="btn-small primary">Known</button>
-        <button type="button" id="next-btn" class="btn-small">Next &rarr;</button>
-      </div>
-      <div class="study-actions">
-        <button type="button" id="shuffle-btn" class="btn-small">Shuffle</button>
-        <button type="button" id="reset-btn" class="btn-small">Reset progress</button>
-        <label class="check"><input type="checkbox" id="only-learning"> Only cards I'm still learning</label>
-      </div>
-    </section>
+        <div id="flashcard" class="flashcard" role="button" tabindex="0" aria-label="Flip card">
+          <div class="flashcard-inner">
+            <div class="face front">
+              <span class="face-label">Front</span>
+              <p id="card-front-text"></p>
+            </div>
+            <div class="face back">
+              <span class="face-label">Back</span>
+              <p id="card-back-text"></p>
+            </div>
+          </div>
+        </div>
+        <p class="hint">Click the card (or press Space) to flip</p>
 
-    <div id="study-empty" class="placeholder" hidden></div>
-  </main>
+        <div class="study-actions">
+          <button type="button" id="prev-btn" class="btn-small">&larr; Back</button>
+          <button type="button" id="learning-btn" class="btn-small learning">Still Learning</button>
+          <button type="button" id="known-btn" class="btn-small primary">Known</button>
+          <button type="button" id="next-btn" class="btn-small">Next &rarr;</button>
+        </div>
+        <div class="study-actions">
+          <button type="button" id="shuffle-btn" class="btn-small">Shuffle</button>
+          <button type="button" id="reset-btn" class="btn-small">Reset progress</button>
+          <label class="check"
+            ><input type="checkbox" id="only-learning" /> Only cards I'm still learning</label
+          >
+        </div>
+      </section>
 
-  <footer>
-    <p>Study To-Go · CS3203 Fall 2026 · Group D</p>
-  </footer>
+      <div id="study-empty" class="placeholder" hidden></div>
+    </main>
 
-  <script src="../js/main.js"></script>
-  <script src="../js/study.js"></script>
-</body>
+    <footer>
+      <p>Study To-Go · CS3203 Fall 2026 · Group D</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/study.js"></script>
+  </body>
 </html>

@@ -1,68 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Decks | Study To-Go</title>
-  <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-  <header class="navbar">
-    <a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19C5 10 11 4 20 4c0 9-6 15-15 15z" fill="#7a9a54"/><path d="M5 19c4-4 7-7 11-11" stroke="#fffdf7" stroke-width="1.6" stroke-linecap="round"/></svg>Study To-Go</a>
-    <nav>
-      <a href="../index.html">Home</a>
-      <a href="decks.html">My Decks</a>
-      <a href="study.html">Study</a>
-      <a href="assistant.html">AI Assistant</a>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Decks | Study To-Go</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a href="../index.html" class="logo"
+        ><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 19C5 10 11 4 20 4c0 9-6 15-15 15z" fill="#7a9a54" />
+          <path
+            d="M5 19c4-4 7-7 11-11"
+            stroke="#fffdf7"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          /></svg
+        >Study To-Go</a
+      >
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="decks.html">My Decks</a>
+        <a href="study.html">Study</a>
+        <a href="assistant.html">AI Assistant</a>
+      </nav>
+    </header>
 
-  <main>
-    <h1 class="page-title">My Decks</h1>
-    <p>Create and manage your flashcard decks.</p>
+    <main>
+      <h1 class="page-title">My Decks</h1>
+      <p>Create and manage your flashcard decks.</p>
 
-    <!-- Deck list view -->
-    <section id="deck-list-view">
-      <form id="new-deck-form" class="inline-form">
-        <input type="text" id="new-deck-name" placeholder="New deck name (e.g. Biology Ch. 3)" maxlength="60" aria-label="New deck name">
-        <button type="submit" class="btn">Add Deck</button>
-      </form>
-      <p id="deck-error" class="error" role="alert"></p>
-      <div id="decks" class="deck-grid"></div>
-    </section>
+      <!-- Deck list view -->
+      <section id="deck-list-view">
+        <form id="new-deck-form" class="inline-form">
+          <input
+            type="text"
+            id="new-deck-name"
+            placeholder="New deck name (e.g. Biology Ch. 3)"
+            maxlength="60"
+            aria-label="New deck name"
+          />
+          <button type="submit" class="btn">Add Deck</button>
+        </form>
+        <p id="deck-error" class="error" role="alert"></p>
+        <div id="decks" class="deck-grid"></div>
+      </section>
 
-    <!-- Single deck editor view -->
-    <section id="deck-edit-view" hidden>
-      <div class="deck-head">
-        <h2 id="deck-title">My Deck</h2>
-        <div class="row-actions">
-          <button type="button" id="rename-deck" class="btn-small">Rename</button>
-          <button type="button" id="study-deck" class="btn-small primary">Study</button>
+      <!-- Single deck editor view -->
+      <section id="deck-edit-view" hidden>
+        <div class="deck-head">
+          <h2 id="deck-title">My Deck</h2>
+          <div class="row-actions">
+            <button type="button" id="rename-deck" class="btn-small">Rename</button>
+            <button type="button" id="study-deck" class="btn-small primary">Study</button>
+          </div>
         </div>
-      </div>
 
-      <form id="card-form" class="card-form">
-        <h3 id="card-form-title">Add a card</h3>
-        <label for="card-front">Front</label>
-        <textarea id="card-front" rows="2" maxlength="500" placeholder="Question or term"></textarea>
-        <label for="card-back">Back</label>
-        <textarea id="card-back" rows="3" maxlength="1000" placeholder="Answer or definition"></textarea>
-        <p id="card-error" class="error" role="alert"></p>
-        <div class="row-actions">
-          <button type="submit" class="btn" id="card-submit">Add Card</button>
-          <button type="button" class="btn-small" id="card-cancel" hidden>Cancel edit</button>
-        </div>
-      </form>
+        <form id="card-form" class="card-form">
+          <h3 id="card-form-title">Add a card</h3>
+          <label for="card-front">Front</label>
+          <textarea
+            id="card-front"
+            rows="2"
+            maxlength="500"
+            placeholder="Question or term"
+          ></textarea>
+          <label for="card-back">Back</label>
+          <textarea
+            id="card-back"
+            rows="3"
+            maxlength="1000"
+            placeholder="Answer or definition"
+          ></textarea>
+          <p id="card-error" class="error" role="alert"></p>
+          <div class="row-actions">
+            <button type="submit" class="btn" id="card-submit">Add Card</button>
+            <button type="button" class="btn-small" id="card-cancel" hidden>Cancel edit</button>
+          </div>
+        </form>
 
-      <div id="cards" class="card-list"></div>
-    </section>
-  </main>
+        <div id="cards" class="card-list"></div>
+      </section>
+    </main>
 
-  <footer>
-    <p>Study To-Go · CS3203 Fall 2026 · Group D</p>
-  </footer>
+    <footer>
+      <p>Study To-Go · CS3203 Fall 2026 · Group D</p>
+    </footer>
 
-  <script src="../js/main.js"></script>
-  <script src="../js/decks.js"></script>
-</body>
+    <script src="../js/main.js"></script>
+    <script src="../js/decks.js"></script>
+  </body>
 </html>
