@@ -29,7 +29,7 @@ function loadDecks() {
   try {
     const decks = loadData(DECKS_KEY);
     return Array.isArray(decks) ? decks : [];
-  } catch (e) {
+  } catch {
     return [];
   }
 }
