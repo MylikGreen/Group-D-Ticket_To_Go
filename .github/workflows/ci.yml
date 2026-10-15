@@ -1,4 +1,3 @@
-
 # CI: checks HTML whenever code is pushed or a pull request is opened
 name: CI
 
@@ -6,6 +5,8 @@ on:
   push:
     branches: ["**"]
   pull_request:
+  # Lets deploy.yml run these checks before publishing
+  workflow_call:
 
 jobs:
   html-validate:
