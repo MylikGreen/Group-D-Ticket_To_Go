@@ -41,3 +41,31 @@ function saveDecks(decks) {
 function makeId() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 }
+
+function updateThemeButtons() {
+  const isDark = document.body.classList.contains("dark-mode");
+
+  document.querySelectorAll(".theme-toggle").forEach(button => {
+    button.setAttribute("aria-pressed", String(isDark));
+
+    const icon = button.querySelector(".theme-toggle-icon");
+    if (icon) {
+      icon.textContent = isDark ? "🌙" : "☀️";
+    }
+  });
+}
+
+function toggleDarkMode() {
+  const isDark = document.body.classList.toggle("dark-mode");
+
+  localStorage.setItem("darkMode", String(isDark));
+  updateThemeButtons();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark-mode");
+  }
+
+  updateThemeButtons();
+});
