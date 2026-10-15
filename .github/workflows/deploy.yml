@@ -1,4 +1,3 @@
-
 # CD: publishes the website to GitHub Pages when main changes
 name: Deploy to GitHub Pages
 
@@ -16,7 +15,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Run the CI checks first; deploy only starts if they pass
+  ci:
+    uses: ./.github/workflows/ci.yml
+
   deploy:
+    needs: ci
     runs-on: ubuntu-latest
 
     environment:
