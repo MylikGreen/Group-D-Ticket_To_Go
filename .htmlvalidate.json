@@ -1,11 +1,10 @@
-
 {
-  "extends": [
-    "html-validate:recommended"
-  ],
+  "extends": ["html-validate:recommended"],
   "rules": {
     "no-inline-style": "off",
     "heading-level": "off",
-    "prefer-native-element": "off"
+    "prefer-native-element": "off",
+    "doctype-style": "off",
+    "void-style": "off"
   }
 }
