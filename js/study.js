@@ -204,8 +204,6 @@ if (wanted && decks.some((d) => d.id === wanted)) {
   showPicker();
 }
 
-
-
 /* ---------- Multiple Choice Quiz ---------- */
 
 let quizCards = [];
@@ -213,6 +211,7 @@ let quizPosition = 0;
 let quizScore = 0;
 let currentQuestion = null;
 let quizAnswered = false;
+let quizResults = [];
 
 function startMatchingQuiz() {
   if (!deck || deck.cards.length === 0) {
@@ -228,6 +227,7 @@ function startMatchingQuiz() {
   quizCards = shuffled([...deck.cards]);
   quizPosition = 0;
   quizScore = 0;
+  quizResults = [];
 
   show("study-area", false);
   show("study-picker", false);
@@ -261,8 +261,7 @@ function renderQuizQuestion() {
     `Score: ${quizScore} | Question ${questionNumber} of ${totalQuestions}`;
 
   const batchInfo = document.createElement("p");
-  batchInfo.textContent =
-    `Set ${batchNumber}: Questions ${batchStart + 1}-${batchEnd}`;
+  batchInfo.textContent = `Set ${batchNumber}: Questions ${batchStart + 1}-${batchEnd}`;
   game.appendChild(batchInfo);
 
   const heading = document.createElement("h3");
@@ -275,9 +274,10 @@ function renderQuizQuestion() {
   game.appendChild(definition);
 
   // Select three different incorrect answers.
-  const otherCards = shuffled(
-    deck.cards.filter((card) => card.id !== currentQuestion.id)
-  ).slice(0, 3);
+  const otherCards = shuffled(deck.cards.filter((card) => card.id !== currentQuestion.id)).slice(
+    0,
+    3,
+  );
 
   // Mix the correct answer with the three incorrect answers.
   const options = shuffled([currentQuestion, ...otherCards]);
@@ -294,10 +294,10 @@ function renderQuizQuestion() {
 
       if (card.id === currentQuestion.id) {
         quizScore++;
-        currentQuestion.correct = true;
+        quizResults[quizPosition] = true;
         $("matching-feedback").textContent = "Correct!";
       } else {
-        currentQuestion.correct = false;
+        quizResults[quizPosition] = false;
         $("matching-feedback").textContent =
           `Incorrect. The correct answer is ${currentQuestion.front}.`;
       }
@@ -314,7 +314,7 @@ function renderQuizQuestion() {
       nextButton.className = "btn-small";
       nextButton.textContent =
         questionNumber % 10 === 0 && questionNumber < totalQuestions
-          ? "Continue to Next Set"
+          ? "See Set Results"
           : questionNumber === totalQuestions
             ? "See Results"
             : "Next Question";
@@ -336,8 +336,6 @@ function renderQuizQuestion() {
   });
 }
 
-
-
 function showQuizResults() {
   const game = $("matching-game");
   game.innerHTML = "";
@@ -346,29 +344,27 @@ function showQuizResults() {
   const batchEnd = quizPosition;
   const batchStart = Math.floor((batchEnd - 1) / 10) * 10;
 
-  const batchCards = quizCards.slice(batchStart, batchEnd);
-  const batchScore = batchCards.filter(
-    (card) => card.correct === true
-  ).length;
-  const batchTotal = batchCards.length;
+  const batchResults = quizResults.slice(batchStart, batchEnd);
+  const batchScore = batchResults.filter((result) => result === true).length;
+  const batchTotal = batchEnd - batchStart;
+  const percent = batchTotal > 0 ? (batchScore / batchTotal) * 100 : 0;
 
   $("matching-score").textContent =
     `Set ${Math.floor(batchStart / 10) + 1} Score: ${batchScore} / ${batchTotal}`;
 
   let feedback;
 
-  if (batchScore >= 9) {
+  if (percent >= 90) {
     feedback = "Excellent work!";
-  } else if (batchScore >= 7) {
+  } else if (percent >= 70) {
     feedback = "Good job!";
-  } else if (batchScore >= 5) {
+  } else if (percent >= 50) {
     feedback = "Not bad, keep practicing!";
   } else {
     feedback = "Keep studying — you'll improve!";
   }
 
-  $("matching-feedback").textContent =
-    `${feedback} You scored ${batchScore} out of ${batchTotal}.`;
+  $("matching-feedback").textContent = `${feedback} You scored ${batchScore} out of ${batchTotal}.`;
 
   if (batchEnd < totalQuestions) {
     const nextButton = document.createElement("button");
@@ -379,26 +375,9 @@ function showQuizResults() {
     nextButton.addEventListener("click", renderQuizQuestion);
     game.appendChild(nextButton);
   } else {
-    $("matching-feedback").textContent +=
-      " Quiz complete! Would you like to study again?";
-
-    const restartButton = document.createElement("button");
-    restartButton.type = "button";
-    restartButton.className = "btn-small";
-    restartButton.textContent = "Study Again";
-    restartButton.addEventListener("click", startMatchingQuiz);
-    game.appendChild(restartButton);
-
-    const backButton = document.createElement("button");
-    backButton.type = "button";
-    backButton.className = "btn-small";
-    backButton.textContent = "Back to Flashcards";
-    backButton.addEventListener("click", returnToFlashcards);
-    game.appendChild(backButton);
+    $("matching-feedback").textContent += " Quiz complete! Would you like to study again?";
   }
 }
-
-
 
 function returnToFlashcards() {
   show("matching-quiz", false);
@@ -409,7 +388,3 @@ function returnToFlashcards() {
 $("card-match-btn").addEventListener("click", startMatchingQuiz);
 $("matching-restart-btn").addEventListener("click", startMatchingQuiz);
 $("matching-back-btn").addEventListener("click", returnToFlashcards);
-
-
-
-
