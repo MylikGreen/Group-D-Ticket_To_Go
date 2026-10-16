@@ -700,3 +700,42 @@ body.dark-mode .theme-toggle-icon {
   outline: 3px solid var(--matcha);
   outline-offset: 3px;
 }
+
+/* Multiple Choice Quiz Layout */
+#matching-quiz {
+  max-width: 900px;
+  margin: 24px auto;
+}
+
+#matching-game {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+#matching-game .quiz-definition {
+  padding: 24px;
+  background: var(--milk);
+  border: 1px solid var(--matcha-light);
+  border-radius: 12px;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+#matching-game button {
+  width: 100%;
+  min-height: 48px;
+  white-space: normal;
+  text-align: center;
+}
+
+#matching-game button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+#matching-feedback {
+  margin-top: 12px;
+  font-weight: 600;
+}

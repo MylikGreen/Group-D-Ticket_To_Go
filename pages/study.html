@@ -73,6 +73,7 @@
           <button type="button" id="learning-btn" class="btn-small learning">Still Learning</button>
           <button type="button" id="known-btn" class="btn-small primary">Known</button>
           <button type="button" id="next-btn" class="btn-small">Next &rarr;</button>
+          <button type="button" id="card-match-btn" class="btn-small">Multiple Choice Quiz</button>
         </div>
         <div class="study-actions">
           <button type="button" id="shuffle-btn" class="btn-small">Shuffle</button>
@@ -82,6 +83,19 @@
           >
         </div>
       </section>
+
+      <div id="matching-quiz" hidden>
+        <h2>Multiple Choice Quiz</h2>
+        <p>Choose the term that matches the definition.</p>
+        <p id="matching-score">Score: 0</p>
+        <div id="matching-game"></div>
+        <p id="matching-feedback" role="status" aria-live="polite"></p>
+
+        <div class="study-actions">
+          <button type="button" id="matching-restart-btn" class="btn-small">Study Again</button>
+          <button type="button" id="matching-back-btn" class="btn-small">Back to Flashcards</button>
+        </div>
+      </div>
 
       <div id="study-empty" class="placeholder" hidden></div>
     </main>
