@@ -203,3 +203,213 @@ if (wanted && decks.some((d) => d.id === wanted)) {
 } else {
   showPicker();
 }
+
+
+
+/* ---------- Multiple Choice Quiz ---------- */
+
+let quizCards = [];
+let quizPosition = 0;
+let quizScore = 0;
+let currentQuestion = null;
+let quizAnswered = false;
+
+function startMatchingQuiz() {
+  if (!deck || deck.cards.length === 0) {
+    alert("Select a deck with flashcards first.");
+    return;
+  }
+
+  if (deck.cards.length < 4) {
+    alert("This quiz needs at least 4 cards to provide four answer choices.");
+    return;
+  }
+
+  quizCards = shuffled([...deck.cards]);
+  quizPosition = 0;
+  quizScore = 0;
+
+  show("study-area", false);
+  show("study-picker", false);
+  show("study-empty", false);
+  show("matching-quiz", true);
+
+  renderQuizQuestion();
+}
+
+function renderQuizQuestion() {
+  const game = $("matching-game");
+  game.innerHTML = "";
+  $("matching-feedback").textContent = "";
+
+  // Show final results after every card has been answered.
+  if (quizPosition >= quizCards.length) {
+    showQuizResults();
+    return;
+  }
+
+  currentQuestion = quizCards[quizPosition];
+  quizAnswered = false;
+
+  const questionNumber = quizPosition + 1;
+  const totalQuestions = quizCards.length;
+  const batchNumber = Math.floor(quizPosition / 10) + 1;
+  const batchStart = Math.floor(quizPosition / 10) * 10;
+  const batchEnd = Math.min(batchStart + 10, totalQuestions);
+
+  $("matching-score").textContent =
+    `Score: ${quizScore} | Question ${questionNumber} of ${totalQuestions}`;
+
+  const batchInfo = document.createElement("p");
+  batchInfo.textContent =
+    `Set ${batchNumber}: Questions ${batchStart + 1}-${batchEnd}`;
+  game.appendChild(batchInfo);
+
+  const heading = document.createElement("h3");
+  heading.textContent = "Which term matches this definition?";
+  game.appendChild(heading);
+
+  const definition = document.createElement("p");
+  definition.className = "quiz-definition";
+  definition.textContent = currentQuestion.back;
+  game.appendChild(definition);
+
+  // Select three different incorrect answers.
+  const otherCards = shuffled(
+    deck.cards.filter((card) => card.id !== currentQuestion.id)
+  ).slice(0, 3);
+
+  // Mix the correct answer with the three incorrect answers.
+  const options = shuffled([currentQuestion, ...otherCards]);
+
+  options.forEach((card) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "btn-small";
+    button.textContent = card.front;
+
+    button.addEventListener("click", () => {
+      if (quizAnswered) return;
+      quizAnswered = true;
+
+      if (card.id === currentQuestion.id) {
+        quizScore++;
+        currentQuestion.correct = true;
+        $("matching-feedback").textContent = "Correct!";
+      } else {
+        currentQuestion.correct = false;
+        $("matching-feedback").textContent =
+          `Incorrect. The correct answer is ${currentQuestion.front}.`;
+      }
+
+      $("matching-score").textContent =
+        `Score: ${quizScore} | Question ${questionNumber} of ${totalQuestions}`;
+
+      game.querySelectorAll("button").forEach((b) => {
+        b.disabled = true;
+      });
+
+      const nextButton = document.createElement("button");
+      nextButton.type = "button";
+      nextButton.className = "btn-small";
+      nextButton.textContent =
+        questionNumber % 10 === 0 && questionNumber < totalQuestions
+          ? "Continue to Next Set"
+          : questionNumber === totalQuestions
+            ? "See Results"
+            : "Next Question";
+
+      nextButton.addEventListener("click", () => {
+        quizPosition++;
+
+        if (quizPosition % 10 === 0 || quizPosition >= quizCards.length) {
+          showQuizResults();
+        } else {
+          renderQuizQuestion();
+        }
+      });
+
+      game.appendChild(nextButton);
+    });
+
+    game.appendChild(button);
+  });
+}
+
+
+
+function showQuizResults() {
+  const game = $("matching-game");
+  game.innerHTML = "";
+
+  const totalQuestions = quizCards.length;
+  const batchEnd = quizPosition;
+  const batchStart = Math.floor((batchEnd - 1) / 10) * 10;
+
+  const batchCards = quizCards.slice(batchStart, batchEnd);
+  const batchScore = batchCards.filter(
+    (card) => card.correct === true
+  ).length;
+  const batchTotal = batchCards.length;
+
+  $("matching-score").textContent =
+    `Set ${Math.floor(batchStart / 10) + 1} Score: ${batchScore} / ${batchTotal}`;
+
+  let feedback;
+
+  if (batchScore >= 9) {
+    feedback = "Excellent work!";
+  } else if (batchScore >= 7) {
+    feedback = "Good job!";
+  } else if (batchScore >= 5) {
+    feedback = "Not bad, keep practicing!";
+  } else {
+    feedback = "Keep studying — you'll improve!";
+  }
+
+  $("matching-feedback").textContent =
+    `${feedback} You scored ${batchScore} out of ${batchTotal}.`;
+
+  if (batchEnd < totalQuestions) {
+    const nextButton = document.createElement("button");
+    nextButton.type = "button";
+    nextButton.className = "btn-small";
+    nextButton.textContent = "Continue to Next Set";
+
+    nextButton.addEventListener("click", renderQuizQuestion);
+    game.appendChild(nextButton);
+  } else {
+    $("matching-feedback").textContent +=
+      " Quiz complete! Would you like to study again?";
+
+    const restartButton = document.createElement("button");
+    restartButton.type = "button";
+    restartButton.className = "btn-small";
+    restartButton.textContent = "Study Again";
+    restartButton.addEventListener("click", startMatchingQuiz);
+    game.appendChild(restartButton);
+
+    const backButton = document.createElement("button");
+    backButton.type = "button";
+    backButton.className = "btn-small";
+    backButton.textContent = "Back to Flashcards";
+    backButton.addEventListener("click", returnToFlashcards);
+    game.appendChild(backButton);
+  }
+}
+
+
+
+function returnToFlashcards() {
+  show("matching-quiz", false);
+  show("study-area", true);
+  render();
+}
+
+$("card-match-btn").addEventListener("click", startMatchingQuiz);
+$("matching-restart-btn").addEventListener("click", startMatchingQuiz);
+$("matching-back-btn").addEventListener("click", returnToFlashcards);
+
+
+
+
