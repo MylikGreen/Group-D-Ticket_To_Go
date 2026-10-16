@@ -1,5 +1,7 @@
 # Study To-Go
 
+🌐 **Live site:** https://mylikgreen.github.io/Group-D-Ticket_To_Go/
+
 **Study To-Go** is a study companion web app that helps students learn faster with digital flashcards and an AI study assistant. Students can create card decks, study them in a card based format, and ask the AI assistant to explain concepts, quiz them, or generate flashcards from their notes.
 
 > CS3203 Software Engineering, Fall 2026, University of Oklahoma (Group D)
