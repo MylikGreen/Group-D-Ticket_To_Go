@@ -33,12 +33,21 @@
           <span class="theme-toggle-icon">☀️</span>
         </button>
       </div>
+      <form class="nav-search" role="search" onsubmit="event.preventDefault();">
+        <input 
+          type="search" 
+          placeholder="Search flashcards..." 
+          aria-label="Search flashcards"
+        />
+        <button type="submit" aria-label="Search">🔍</button>
+      </form>
 
       <nav>
         <a href="index.html" class="active">Home</a>
         <a href="pages/decks.html">My Decks</a>
         <a href="pages/study.html">Study</a>
         <a href="pages/assistant.html">AI Assistant</a>
+        <a href="pages/library.html">Library</a> <!-- MOVED HERE -->
       </nav>
     </header>
     <main>

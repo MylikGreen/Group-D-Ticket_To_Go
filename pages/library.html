@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library | Study To-Go</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="logo-container">
+        <a href="../index.html" class="logo">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 19C5 10 11 4 20 4c0 9-6 15-15 15z" fill="#7a9a54" />
+            <path
+              d="M5 19c4-4 7-7 11-11"
+              stroke="#fffdf7"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+          </svg>
+          Study To-Go
+        </a>
+
+        <button
+          type="button"
+          class="theme-toggle"
+          onclick="toggleDarkMode()"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <span class="theme-toggle-icon">☀️</span>
+        </button>
+      </div>
+      <form class="nav-search" role="search" onsubmit="event.preventDefault();">
+        <input 
+          type="search" 
+          placeholder="Search math concepts..." 
+          aria-label="Search library"
+        />
+        <button type="submit" aria-label="Search">🔍</button>
+      </form>
+
+
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="decks.html">My Decks</a>
+        <a href="study.html">Study</a>
+        <a href="assistant.html">AI Assistant</a>
+        <a href="library.html" class="active">Library</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1 class="page-title">Math Library</h1>
+      <p>A collection of fundamental study cards to refresh your core math concepts.</p>
+
+      <section class="library-grid">
+        <!-- Card 1: Addition -->
+        <article class="library-card">
+          <div class="library-card-header">
+            <span class="tag">Basic Math</span>
+            <h3>Addition (+)</h3>
+          </div>
+          <p class="definition">
+            <strong>Concept:</strong> Combining two or more numbers together to find their total sum.
+          </p>
+          <div class="example-box">
+            <strong>Example:</strong>
+            <p>If you have 5 apples and buy 3 more:</p>
+            <code>5 + 3 = 8</code>
+          </div>
+        </article>
+
+        <!-- Card 2: Subtraction -->
+        <article class="library-card">
+          <div class="library-card-header">
+            <span class="tag">Basic Math</span>
+            <h3>Subtraction (-)</h3>
+          </div>
+          <p class="definition">
+            <strong>Concept:</strong> Taking one number away from another to find the difference between them.
+          </p>
+          <div class="example-box">
+            <strong>Example:</strong>
+            <p>If you have 10 cookies and eat 4:</p>
+            <code>10 - 4 = 6</code>
+          </div>
+        </article>
+
+        <!-- Card 3: Multiplication -->
+        <article class="library-card">
+          <div class="library-card-header">
+            <span class="tag">Basic Math</span>
+            <h3>Multiplication (×)</h3>
+          </div>
+          <p class="definition">
+            <strong>Concept:</strong> Repeated addition of the same number a specified number of times.
+          </p>
+          <div class="example-box">
+            <strong>Example:</strong>
+            <p>4 groups with 3 items in each group:</p>
+            <code>4 × 3 = 12</code>
+          </div>
+        </article>
+
+        <!-- Card 4: Division -->
+        <article class="library-card">
+          <div class="library-card-header">
+            <span class="tag">Basic Math</span>
+            <h3>Division (÷)</h3>
+          </div>
+          <p class="definition">
+            <strong>Concept:</strong> Splitting a number into equal parts or groups.
+          </p>
+          <div class="example-box">
+            <strong>Example:</strong>
+            <p>Sharing 12 slices of pizza equally among 4 friends:</p>
+            <code>12 ÷ 4 = 3</code>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>Study To-Go · CS3203 Fall 2026 · Group D</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+  </body>
+</html>

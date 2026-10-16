@@ -739,3 +739,101 @@ body.dark-mode .theme-toggle-icon {
   margin-top: 12px;
   font-weight: 600;
 }
+/* Search Bar in Navbar */
+.nav-search {
+  display: flex;
+  align-items: center;
+  background: var(--milk);
+  border: 1.5px solid var(--matcha-light);
+  border-radius: 999px;
+  padding: 4px 6px 4px 14px;
+  max-width: 240px;
+  flex: 1;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.nav-search:focus-within {
+  border-color: var(--matcha);
+  box-shadow: 0 0 0 2px var(--foam);
+}
+
+.nav-search input[type="search"] {
+  border: none;
+  background: transparent;
+  padding: 4px 0;
+  font-size: 0.9rem;
+  width: 100%;
+  color: var(--text);
+}
+
+.nav-search input[type="search"]:focus {
+  outline: none;
+}
+
+.nav-search button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.dark-mode .nav-search {
+  background: var(--milk);
+  border-color: var(--matcha-light);
+}
+/* Library Page Grid & Cards */
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.library-card {
+  background: var(--milk);
+  border: 1px solid var(--foam);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s;
+}
+
+.library-card:hover {
+  transform: translateY(-4px);
+}
+
+.library-card-header h3 {
+  color: var(--matcha-dark);
+  font-size: 1.3rem;
+  margin-top: 6px;
+}
+
+.library-card .definition {
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.library-card .example-box {
+  background: var(--foam);
+  border-radius: 16px;
+  padding: 14px 16px;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.library-card .example-box code {
+  display: inline-block;
+  margin-top: 6px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--matcha-dark);
+}
