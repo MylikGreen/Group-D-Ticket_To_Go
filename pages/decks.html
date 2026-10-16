@@ -8,17 +8,28 @@
   </head>
   <body>
     <header class="navbar">
-      <a href="../index.html" class="logo"
-        ><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M5 19C5 10 11 4 20 4c0 9-6 15-15 15z" fill="#7a9a54" />
-          <path
-            d="M5 19c4-4 7-7 11-11"
-            stroke="#fffdf7"
-            stroke-width="1.6"
-            stroke-linecap="round"
-          /></svg
-        >Study To-Go</a
-      >
+      <div class="logo-container">
+        <a href="../index.html" class="logo"
+          ><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 19C5 10 11 4 20 4c0 9-6 15-15 15z" fill="#7a9a54" />
+            <path
+              d="M5 19c4-4 7-7 11-11"
+              stroke="#fffdf7"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            /></svg
+          >Study To-Go</a
+        >
+        <button
+          type="button"
+          class="theme-toggle"
+          onclick="toggleDarkMode()"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <span class="theme-toggle-icon">☀️</span>
+        </button>
+      </div>
       <nav>
         <a href="../index.html">Home</a>
         <a href="decks.html">My Decks</a>
@@ -49,6 +60,7 @@
 
       <!-- Single deck editor view -->
       <section id="deck-edit-view" hidden>
+        <button type="button" id="back-btn" class="btn-link">&larr; All decks</button>
         <div class="deck-head">
           <h2 id="deck-title">My Deck</h2>
           <div class="row-actions">

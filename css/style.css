@@ -209,7 +209,7 @@ nav a.active {
   margin-bottom: 8px;
 }
 
-main>p {
+main > p {
   color: var(--muted);
   font-size: 1.1rem;
 }
@@ -650,10 +650,7 @@ body.dark-mode .navbar {
 
 body.dark-mode .hero {
   background:
-    radial-gradient(circle at 85% 80%,
-      rgba(122, 154, 84, 0.15),
-      transparent 45%),
-    var(--foam);
+    radial-gradient(circle at 85% 80%, rgba(122, 154, 84, 0.15), transparent 45%), var(--foam);
 }
 
 /* Theme switch positioning */
