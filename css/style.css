@@ -749,7 +749,9 @@ body.dark-mode .theme-toggle-icon {
   padding: 4px 6px 4px 14px;
   max-width: 240px;
   flex: 1;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .nav-search:focus-within {
