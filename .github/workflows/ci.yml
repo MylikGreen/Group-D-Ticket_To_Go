@@ -21,8 +21,8 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install HTML validator
-        run: npm install --no-save html-validate
+      - name: Install tools
+        run: npm ci
 
-      - name: Validate HTML files
-        run: npx html-validate "index.html" "pages/*.html"
+      - name: Run all checks (HTML, ESLint, Prettier)
+        run: npm run check

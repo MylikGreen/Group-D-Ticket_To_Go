@@ -45,7 +45,7 @@ function makeId() {
 function updateThemeButtons() {
   const isDark = document.body.classList.contains("dark-mode");
 
-  document.querySelectorAll(".theme-toggle").forEach(button => {
+  document.querySelectorAll(".theme-toggle").forEach((button) => {
     button.setAttribute("aria-pressed", String(isDark));
 
     const icon = button.querySelector(".theme-toggle-icon");

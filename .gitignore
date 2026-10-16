@@ -7,3 +7,6 @@ config.js
 .idea/
 .DS_Store
 Thumbs.db
+
+# Dependencies
+node_modules/
