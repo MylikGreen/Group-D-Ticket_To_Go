@@ -6,7 +6,7 @@
   "scripts": {
     "validate:html": "html-validate \"index.html\" \"pages/*.html\"",
     "lint": "eslint js",
-    "test": "node --test tests/studyOrganizer.test.js",
+    "test": "node --test",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check": "npm run validate:html && npm run lint"
