@@ -41,13 +41,47 @@
     <main>
       <h1 class="page-title">AI Assistant</h1>
       <p>Ask questions or turn your notes into flashcards.</p>
-      <div class="placeholder">Coming soon</div>
-    </main>
 
-    <footer>
-      <p>Study To-Go · CS3203 Fall 2026 · Group D</p>
-    </footer>
+      <!-- Status line: assistant.js writes progress and error messages here. -->
+      <p id="assistant-status" role="status" aria-live="polite">
+        Choose a deck or paste notes to get started.
+      </p>
 
-    <script src="../js/main.js"></script>
-  </body>
-</html>
+      <!-- Setup form: shown first, hidden once a question is generated -->
+      <section id="assistant-setup">
+        <h2>AI Practice Questions</h2>
+
+        <label for="assistant-deck">Deck</label>
+        <select id="assistant-deck">
+          <option value="">No deck (use notes only)</option>
+        </select>
+
+        <label for="assistant-notes">Notes</label>
+        <textarea
+          id="assistant-notes"
+          rows="6"
+          placeholder="Paste your notes here (optional if you picked a deck)"
+        ></textarea>
+
+        <label for="ai-question-prompt">Question style</label>
+        <input
+          type="text"
+          id="ai-question-prompt"
+          placeholder="Example: focus on definitions, or make them harder"
+        />
+
+        <button type="button" id="ai-practice-generate-btn" class="btn-small primary">
+          Generate Question
+        </button>
+      </section>
+
+      <!-- Quiz area: hidden until the first question loads -->
+      <section id="assistant-quiz" hidden>
+        <h2 id="assistant-question"></h2>
+        <div id="assistant-choices"></div>
+        <p id="assistant-feedback"></p>
+
+        <button type="button" id="assistant-next-btn" class="btn-small primary" hidden>
+          Next Question
+        </button>
+        <button type="button" id="assistant-back-btn"
