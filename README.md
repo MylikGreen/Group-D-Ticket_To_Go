@@ -48,6 +48,7 @@
 
 * [Git](https://git-scm.com/)
 * A web browser (Chrome, Firefox, or Edge)
+* [Node.js](https://nodejs.org/) 18 or newer (only needed to run the unit tests and checks)
 * [VS Code](https://code.visualstudio.com/) with the **Live Server** extension (recommended)
 * A Gemini API key (only needed for the AI features, never commit it)
 
@@ -67,6 +68,18 @@
    * **With Live Server:** open the folder in VS Code, right click `index.html`, and pick **Open with Live Server**.
    * **Without it:** double click `index.html` to open it in your browser.
 
+4. **Run the unit tests**
+   Install the dev tools once, then run the tests from the project folder:
+```bash
+   npm ci
+   npm test
+```
+   Unit tests live in the `tests/` folder and use Node's built in test runner, so no browser is needed.
+   Each test file is named after the unit it checks, for example `tests/studyOrganizer.test.js` checks `js/studyOrganizer.js`.
+   A passing run ends with `# fail 0`. GitHub Actions also runs `npm test` on every push.
+
+   To run the HTML, ESLint, and Prettier checks too: `npm run check` and `npm run format:check`.
+
 ## Project Structure
 
 ```
@@ -80,7 +93,10 @@ Group-D-Ticket_To_Go/
 │   └── style.css           # Styles for every page
 ├── js/
 │   ├── main.js             # Shared code (nav, saving data)
+│   ├── studyOrganizer.js   # StudyOrganizer unit (AI study material organizer)
 │   └── config.example.js   # Template for the API key
+├── tests/
+│   └── studyOrganizer.test.js  # Unit tests for StudyOrganizer
 ├── assets/
 │   └── images/             # Images and screenshots
 ├── .gitignore
