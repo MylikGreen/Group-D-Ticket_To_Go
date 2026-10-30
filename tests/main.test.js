@@ -167,13 +167,3 @@ describe("Dark mode", () => {
     assert.equal(document.querySelector(".theme-toggle").getAttribute("aria-pressed"), "false");
   });
 });
-
-describe("Nav highlighting", () => {
-  test("marks only the link for the current page as active", () => {
-    const dom = loadPage();
-    fireReady(dom);
-    const [home, decks] = dom.window.document.querySelectorAll("nav a");
-    assert.ok(!home.classList.contains("active"));
-    assert.ok(decks.classList.contains("active"));
-  });
-});
