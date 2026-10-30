@@ -47,6 +47,11 @@
         Choose a deck or paste notes to get started.
       </p>
 
+      <!-- Link to the new deck: shown after a deck is created -->
+      <p>
+        <a id="assistant-deck-link" href="study.html" hidden>Study your new deck</a>
+      </p>
+
       <!-- Setup form: shown first, hidden once a question is generated -->
       <section id="assistant-setup">
         <h2>AI Practice Questions</h2>
@@ -75,6 +80,19 @@
         </button>
       </section>
 
+      <!-- Create a deck from the notes above. Gemini decides the card count. -->
+      <section id="assistant-create-deck">
+        <h2>Create a Deck from Notes</h2>
+        <p>Uses the notes you pasted above.</p>
+
+        <label for="assistant-deck-name">Deck name</label>
+        <input type="text" id="assistant-deck-name" placeholder="Example: Chapter 3 Review" />
+
+        <button type="button" id="create-deck-btn" class="btn-small primary">
+          Create Deck from Notes
+        </button>
+      </section>
+
       <!-- Quiz area: hidden until the first question loads -->
       <section id="assistant-quiz" hidden>
         <h2 id="assistant-question">Your Practice Question</h2>
@@ -84,10 +102,7 @@
         <button type="button" id="assistant-next-btn" class="btn-small primary" hidden>
           Next Question
         </button>
-        <button type="button" id="assistant-back-btn"          class="btn-small"
-        >
-          Back to Setup
-        </button>
+        <button type="button" id="assistant-back-btn" class="btn-small">Back to Setup</button>
       </section>
     </main>
 
@@ -95,7 +110,10 @@
       <p>Study To-Go · CS3203 Fall 2026 · Group D</p>
     </footer>
 
+    <!-- Order matters: main.js defines loadDecks()/saveDecks(), config.js defines CONFIG,
+         and assistant.js uses both. -->
     <script src="../js/main.js"></script>
+    <script src="../js/config.js"></script>
     <script src="../js/assistant.js"></script>
   </body>
 </html>
