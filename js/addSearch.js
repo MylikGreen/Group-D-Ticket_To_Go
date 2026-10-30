@@ -1,3 +1,4 @@
+/* global module */
 /* eslint-env node */
 // Validation function for search queries
 function addSearch(query) {
