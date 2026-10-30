@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Assistant | Study To-Go</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo-container">
+        <a href="../index.html" class="logo"
+          ><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 19C5 10 11 4 20 4c0 9-6 15-15 15z" fill="#7a9a54" />
+            <path
+              d="M5 19c4-4 7-7 11-11"
+              stroke="#fffdf7"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            /></svg
+          >Study To-Go</a
+        >
+        <button
+          type="button"
+          class="theme-toggle"
+          onclick="toggleDarkMode()"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <span class="theme-toggle-icon">☀️</span>
+        </button>
+      </div>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="decks.html">My Decks</a>
+        <a href="study.html">Study</a>
+        <a href="assistant.html">AI Assistant</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1 class="page-title">AI Assistant</h1>
+      <p>Ask questions or turn your notes into flashcards.</p>
+
+      <!-- Status line: assistant.js writes progress and error messages here. -->
+      <p id="assistant-status" role="status" aria-live="polite">
+        Choose a deck or paste notes to get started.
+      </p>
+
+      <!-- Link to the new deck: shown after a deck is created -->
+      <p>
+        <a id="assistant-deck-link" href="study.html" hidden>Study your new deck</a>
+      </p>
+
+      <!-- Setup form: shown first, hidden once a question is generated -->
+      <section id="assistant-setup">
+        <h2>AI Practice Questions</h2>
+
+        <label for="assistant-deck">Deck</label>
+        <select id="assistant-deck">
+          <option value="">No deck (use notes only)</option>
+        </select>
+
+        <label for="assistant-notes">Notes</label>
+        <textarea
+          id="assistant-notes"
+          rows="6"
+          placeholder="Paste your notes here (optional if you picked a deck)"
+        ></textarea>
+
+        <label for="ai-question-prompt">Question style</label>
+        <input
+          type="text"
+          id="ai-question-prompt"
+          placeholder="Example: focus on definitions, or make them harder"
+        />
+
+        <button type="button" id="ai-practice-generate-btn" class="btn-small primary">
+          Generate Question
+        </button>
+      </section>
+
+      <!-- Create a deck from the notes above. Gemini decides the card count. -->
+      <section id="assistant-create-deck">
+        <h2>Create a Deck from Notes</h2>
+        <p>Uses the notes you pasted above.</p>
+
+        <label for="assistant-deck-name">Deck name</label>
+        <input type="text" id="assistant-deck-name" placeholder="Example: Chapter 3 Review" />
+
+        <button type="button" id="create-deck-btn" class="btn-small primary">
+          Create Deck from Notes
+        </button>
+      </section>
+
+      <!-- Quiz area: hidden until the first question loads -->
+      <section id="assistant-quiz" hidden>
+        <h2 id="assistant-question">Your Practice Question</h2>
+        <div id="assistant-choices"></div>
+        <p id="assistant-feedback"></p>
+
+        <button type="button" id="assistant-next-btn" class="btn-small primary" hidden>
+          Next Question
+        </button>
+        <button type="button" id="assistant-back-btn" class="btn-small">Back to Setup</button>
+      </section>
+    </main>
+
+    <footer>
+      <p>Study To-Go · CS3203 Fall 2026 · Group D</p>
+    </footer>
+
+    <!-- Order matters: main.js defines loadDecks()/saveDecks(), config.js defines CONFIG,
+         and assistant.js uses both. -->
+    <script src="../js/main.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/assistant.js"></script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+# CI: checks HTML whenever code is pushed or a pull request is opened
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  # Lets deploy.yml run these checks before publishing
+  workflow_call:
+
+jobs:
+  html-validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install tools
+        run: npm ci
+
+      - name: Run all checks (HTML, ESLint, Prettier)
+        run: npm run check
+
+      - name: Run unit tests
+        run: npm test
