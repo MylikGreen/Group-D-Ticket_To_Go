@@ -1,3 +1,4 @@
+/* eslint-env node */
 // Validation function for search queries
 function addSearch(query) {
   if (query === null || query === undefined || typeof query !== "string") {
